@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS hrips_db;
+CREATE DATABASE hrips_db;
+USE hrips_db;
