@@ -1,6 +1,6 @@
 //Imports models into this area
 const Employee = require('./Employee');
-const Manager = require('./Manager');
+const Department = require('./Department');
 const Role = require('./Role');
 
 //Associations created in the area below
@@ -11,4 +11,4 @@ const Role = require('./Role');
 
 
 
-module.exports = { Employee, Manager, Role };
+module.exports = { Employee, Department, Role };
