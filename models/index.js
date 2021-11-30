@@ -1,4 +1,5 @@
 //Imports models into this area
+const User = require('./User');
 const Employee = require('./Employee');
 const Department = require('./Department');
 const Role = require('./Role');
@@ -21,4 +22,4 @@ Employee.belongsTo(Department,{
   onDelete: 'SET NULL'
 }),
 
-module.exports = { Employee, Department, Role };
+module.exports = { User, Employee, Department, Role };
