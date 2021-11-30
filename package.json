@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/oldgraybuzzard/hrips#readme",
   "dependencies": {
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "jest": "^27.3.1",
     "mysql2": "^2.3.3",
