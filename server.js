@@ -1,30 +1,50 @@
+const path = require('path');
 const express = require('express');
-const db = require('./config/connection');
+const session = require('express-session');
+const exphbs = require('express-handlebars');
 // Required for PDF
 const pdf = require('pdf-creator-node');
 
 const fs = require('fs');
 //api route for future development
-const apiRoutes = require('./routes');
 
-
-const PORT = process.env.PORT || 3001;
 const app = express();
+const PORT = process.env.PORT || 3001;
+
+const sequelize = require('./config/connection');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
+const sess = {
+  secret: ';lkjd?LJF)9*)Ujj_)#*k;ldjf4?!jf1k2l8djf7poah',
+  cookie: {},
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize
+  })
+};
+
+app.use(session(sess));
+
+const helpers = require('./utils/helpers');
+
+const hbs = exphbs.create({ helpers });
+
+const apiRoutes = require('./routes');
 
 //for pdf
 const html = fs.readFileSync('./views/partials/pdfTemplate.handlebars')
 
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
 -
 // Use apiRoutes - for future development
-app.use('/api', apiRoutes);
+app.use(require('./routes/'));
 
-db.connect(err => {
-    if (err) throw err;
-    console.log('Database connected.');
-    app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
-      
-    });
-  });
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log('Now listening'));
+});

@@ -2,8 +2,8 @@
 const express = require('express');
 const router = express.Router();
 
-router.use(require('./apiRoutes/departmentRoutes'));
-router.use(require('./apiRoutes/employeeRoutes'));
-router.use(require('./apiRoutes/roleRoutes'));
+router.use(require('./api/departmentRoutes'));
+router.use(require('./api/employeeRoutes'));
+router.use(require('./api/roleRoutes'));
 
 module.exports = router;
