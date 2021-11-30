@@ -5,7 +5,7 @@ const pdf = require('pdf-creator-node');
 
 const fs = require('fs');
 //api route for future development
-const apiRoutes = require('./controllers');
+const apiRoutes = require('./routes');
 
 
 const PORT = process.env.PORT || 3001;
