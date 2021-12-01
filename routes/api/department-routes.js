@@ -4,7 +4,7 @@ const router = express.Router();
 const db = require('../../config/connection');
 
 //Get all departments
-router.get('/departments', (req, res) => {
+router.get('/', (req, res) => {
   const sql = `SELECT * FROM department`;
       db.query(sql, (err, rows) => {
       if (err) {
@@ -19,7 +19,7 @@ router.get('/departments', (req, res) => {
   });
 
   //Get one department
-  router.get('/department/:id', (req, res) => {
+  router.get('/:id', (req, res) => {
     const sql = `SELECT * FROM department WHERE id = ?`;
     const params = [req.params.id];
     db.query(sql, params, (err, row) => {
@@ -35,7 +35,7 @@ router.get('/departments', (req, res) => {
 });
 
 //Delete one department
-router.delete('/department/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
   const sql = `DELETE FROM department WHERE id = ?`;
   const params = [req.params.id];
   db.query(sql, params, (err, result) => {
@@ -53,7 +53,7 @@ router.delete('/department/:id', (req, res) => {
 });
 
 //Add a department
-router.post('/department', (req, res) => {
+router.post('/', (req, res) => {
   const sql = `INSERT INTO department (name)
     VALUES (?)`;
   const params = [body.name];

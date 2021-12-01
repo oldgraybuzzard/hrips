@@ -3,7 +3,7 @@ const sequelize = require('../config/connection');
 
 class Employee extends Model {}
 
-Comment.init(
+Employee.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -37,7 +37,7 @@ Comment.init(
     manager_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'manager',
+        model: 'employee',
         key: 'id'
       }
     },

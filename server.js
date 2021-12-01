@@ -30,8 +30,6 @@ const helpers = require('./utils/helpers');
 
 const hbs = exphbs.create({ helpers });
 
-const apiRoutes = require('./routes');
-
 //for pdf
 const html = fs.readFileSync('./views/partials/pdfTemplate.handlebars')
 
