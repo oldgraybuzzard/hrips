@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { User, Employee, Role, Department } = require('../models');
+const { User, Employee, Role } = require('../models');
 
 // get all employees for homepage
 router.get('/', (req, res) => {
@@ -16,25 +16,17 @@ router.get('/', (req, res) => {
     ],
     include: [
       {
-        model: Department,
+        model: Role,
         attributes: ['id', 'title', 'salary', 'department_id'],
-        include: {
-          model: User,
-          attributes: ['username']
-        }
       },
-      {
-        model: User,
-        attributes: ['username']
-      }
     ]
   })
-    .then(dbPostData => {
-      const posts = dbPostData.map(post => post.get({ plain: true }));
+    .then(dbEmployeeData => {
+      const employees = dbEmployeeData.map(employees => employees.get({ plain: true }));
 
       res.render('homepage', {
-        posts,
-        loggedIn: req.session.loggedIn
+        employees,
+        // loggedIn: req.session.loggedIn
       });
     })
     .catch(err => {
@@ -43,7 +35,7 @@ router.get('/', (req, res) => {
     });
 });
 
-// get single post
+// get single employee
 router.get('/employee/:id', (req, res) => {
   Employee.findOne({
     where: {
@@ -59,30 +51,22 @@ router.get('/employee/:id', (req, res) => {
     ],
     include: [
       {
-        model: Comment,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-        include: {
-          model: User,
-          attributes: ['username']
-        }
+        model: Role,
+        attributes: ['id', 'title', 'salary', 'department_id'],
       },
-      {
-        model: User,
-        attributes: ['username']
-      }
     ]
   })
-    .then(dbPostData => {
-      if (!dbPostData) {
-        res.status(404).json({ message: 'No post found with this id' });
+    .then(dbEmployeeData => {
+      if (!dbEmployeeData) {
+        res.status(404).json({ message: 'No employee found with this id' });
         return;
       }
 
-      const post = dbPostData.get({ plain: true });
+      const employee = dbEmployeeData.get({ plain: true });
 
-      res.render('single-post', {
-        post,
-        loggedIn: req.session.loggedIn
+      res.render('employee', {
+        employee,
+        // loggedIn: req.session.loggedIn
       });
     })
     .catch(err => {

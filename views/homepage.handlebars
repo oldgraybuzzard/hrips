@@ -1,0 +1,18 @@
+<ol class="employee-list">
+  {{#each employees}}
+  <li>
+    <article class="employee">
+      <ol>
+      <div class="meta">
+        Title: {{role.title}} <br>
+        Last Name: {{last_name}} <br>
+        First Name: {{first_name}} <br>
+        email: {{email}} <br>
+        Salary: {{role.salary}} <br>
+      </ol>
+
+      </div>
+    </article>
+  </li>
+{{/each}}
+</ol>

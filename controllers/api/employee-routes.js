@@ -1,10 +1,26 @@
 // future development
 const router = require('express').Router();
-const { Employee } = require('../../models');
+const { Sequelize } = require('sequelize/dist');
+const { Employee, Role } = require('../../models');
 
  //Get all employees
     router.get('/', (req, res) => {
-      Employee.findAll()
+      Employee.findAll({
+        attributes: [
+          'id',
+          'first_name',
+          'last_name',
+          'email',
+          'manager_id',
+          'role_id'
+        ],
+        include: [
+          {
+            model: Role,
+            attributes: ['id', 'title', 'salary', 'department_id']
+          }
+        ],
+      })
         .then(dbEmployeeData => res.json(dbEmployeeData))
         .catch(err => {
           console.log(err);
