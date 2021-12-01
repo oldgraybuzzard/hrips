@@ -1,74 +1,100 @@
 // future development
 const express = require('express');
+const { route } = require('.');
 const router = express.Router();
 const db = require('../../config/connection');
+const { Department } = require('../../models');
 
 //Get all departments
 router.get('/', (req, res) => {
-  const sql = `SELECT * FROM department`;
-      db.query(sql, (err, rows) => {
-      if (err) {
-        res.status(500).json({ error: err.message });
-        return;
-      }
-      res.json({
-        message: 'success',
-        data: rows
-      });
-    });
+  Department.findAll()
+  .then()
+  .then(dbDepartmentData => res.json(dbDepartmentData))
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
   });
+});
 
   //Get one department
   router.get('/:id', (req, res) => {
-    const sql = `SELECT * FROM department WHERE id = ?`;
-    const params = [req.params.id];
-    db.query(sql, params, (err, row) => {
-      if (err) {
-        res.status(400).json({ error: err.message });
+    Department.findOne({
+      where: {
+          id: req.params.id
+      },
+    })
+    .then(dbDepartmentData => {
+      if (!dbDepartmentData) {
+        res.status(404).json({ message: 'No department found with this id' });
         return;
       }
-    res.join({
-      message: 'success',
-      data: row
-    });  
-  });
+      res.json(dbDepartmentData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 //Delete one department
 router.delete('/:id', (req, res) => {
-  const sql = `DELETE FROM department WHERE id = ?`;
-  const params = [req.params.id];
-  db.query(sql, params, (err, result) => {
-    if (err) {
-      res.status(400).json({ error: res.message });
-      //check to ensure deletion occured
-    } else {
-      res.json({
-        message: 'deleted',
-        changes: results.affectedRows,
-        id: req.params.id
-      });
+  Department.destroy({
+    where: {
+      id: req.params.id
     }
+  })
+  .then(dbDepartmentData => {
+    if (!dbDepartmentData) {
+      res.status(404).json({ message: 'No department found with this id' });
+      return;
+    }
+    res.json(dbDepartmentData);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
   });
 });
+
 
 //Add a department
 router.post('/', (req, res) => {
-  const sql = `INSERT INTO department (name)
-    VALUES (?)`;
-  const params = [body.name];
-
-  db.query(sql, params, (err, result) => {
-    if (err) {
-      res.status(400).json({ error: err.message });
-      return;
-    }
-    res.json({
-      message: 'success',
-      data: body
+  Department.create({
+    name: req.body.name,
+  })
+  .then(dbDepartmentData => {
+    req.session.save(() => {
+      req.session.department_id = dbDepartmentData.id;
+      req.session.name = dbDepartmentData.name;
+      
+      res.json(dbDepartmentData);
     });
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
   });
 });
 
+router.put('/:id', (req, res) => {
+  Department.update(req.body, {
+      individualHooks: true,
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(dbDepartmentData => {
+        if (!dbDepartmentData) {
+          res.status(404).json({ message: 'No department found with this id' });
+          return;
+        }
+        res.json(dbDepartmentData);
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  });
+  
 
 module.exports = router;
