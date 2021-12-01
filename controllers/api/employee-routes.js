@@ -2,6 +2,7 @@
 const router = require('express').Router();
 const { Sequelize } = require('sequelize/dist');
 const { Employee, Role } = require('../../models');
+const withAuth = require('../../utils/auth');
 
  //Get all employees
     router.get('/', (req, res) => {

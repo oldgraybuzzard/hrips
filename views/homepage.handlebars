@@ -1,3 +1,4 @@
+{{#if loggeIn}}
 <ol class="employee-list">
   {{#each employees}}
   <li>
@@ -16,3 +17,9 @@
   </li>
 {{/each}}
 </ol>
+{{/if}}
+
+{{#unless loggedIn}}
+<h1>You must login first!</h1>
+{{/unless}}
+

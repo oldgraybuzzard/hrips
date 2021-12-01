@@ -26,7 +26,7 @@ router.get('/', (req, res) => {
 
       res.render('homepage', {
         employees,
-        // loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn
       });
     })
     .catch(err => {
@@ -66,7 +66,7 @@ router.get('/employee/:id', (req, res) => {
 
       res.render('employee', {
         employee,
-        // loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn
       });
     })
     .catch(err => {

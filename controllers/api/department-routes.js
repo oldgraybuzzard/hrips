@@ -1,6 +1,7 @@
 // future development
 const router = require('express').Router();
 const { Department } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 //Get all departments
 router.get('/', (req, res) => {

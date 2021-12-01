@@ -1,6 +1,7 @@
 // future development
 const router = require('express').Router();
 const { Role } = require('../../models');
+const withAuth = require('../../utils/auth');
 
  //Get all Roles
  router.get('/', (req, res) => {
