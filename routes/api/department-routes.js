@@ -1,8 +1,5 @@
 // future development
-const express = require('express');
-const { route } = require('.');
-const router = express.Router();
-const db = require('../../config/connection');
+const router = require('express').Router();
 const { Department } = require('../../models');
 
 //Get all departments
