@@ -1,12 +1,18 @@
 async function newFormHandler(event) {
   event.preventDefault();
 
-  const employeeFirstName = document.querySelector('input[name="first_name"]').value;
+  const first_name = document.querySelector('input[name="first_name"]').value;
+  const last_name = document.querySelector('input[name="last_name"]').value;
+  const email = document.querySelector('input[name="email"]').value;
+
 
   const response = await fetch(`/api/employees`, {
     method: 'POST',
     body: JSON.stringify({
-      employeeFirstName,
+      first_name,
+      last_name,
+      email,
+
       
     }),
     headers: {
@@ -15,7 +21,7 @@ async function newFormHandler(event) {
   });
 
   if (response.ok) {
-    document.location.replace('/employee-dashboard');
+    document.location.replace('/');
   } else {
     alert(response.statusText);
   }
