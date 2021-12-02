@@ -3,10 +3,7 @@ const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers/');
-// Required for PDF
-const pdf = require('pdf-creator-node');
 
-const fs = require('fs');
 
 
 
@@ -32,8 +29,6 @@ const helpers = require('./utils/helpers');
 
 const hbs = exphbs.create({ helpers });
 
-//for pdf
-const html = fs.readFileSync('./views/partials/pdfTemplate.handlebars')
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');

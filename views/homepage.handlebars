@@ -18,7 +18,7 @@
   </form>
 </section>
 
-{{#if employees.length}}
+{{!-- {{#if employees.length}}
 <section>
   
   <ol>
@@ -30,19 +30,18 @@
     {{/each}}
   </ol>
 </section>
-{{/if}}
+{{/if}} --}}
 
 {{#if employees.length}}
 <section>
-  <h2>List of Company Employees</h2>
+  <h2>List of Company Employees</h2>  
+  {{#each employees as |employees|}}
   <ol class="employee-list">
-    {{#each employees}}
-    <li>
-      {{> employee-info }}
-      
+  <li>
+      {{> employee-info employees}}
     </li>
-  {{/each}}
   </ol>
+  {{/each}}
 </section>
 {{/if}}
 
