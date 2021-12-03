@@ -1,3 +1,8 @@
+{{#unless loggedIn}}
+<h1>You must login first!</h1>
+{{/unless}}
+
+{{#if loggedIn}}
 <section>
   <h2>Create New Employee</h2>
 
@@ -14,9 +19,19 @@
       <label for="email">Email</label>
       <input type="email" id="email" name="email" />
     </div>
-    <button type="submit" class="btn">Create</button>
+    <div>
+      <label for="manager_id">Manager ID</label>
+      <input type="manager_id" id="manager_id" name="manager_id" />
+    </div>
+    <div>
+      <label for="role_id">Job Title</label>
+      <input type="role_id" id="role_id" name="role_id" />
+    </div>        
+    <button type="submit" class="btn btn-primary">Create</button>
   </form>
 </section>
+
+<hr>
 
 {{!-- {{#if employees.length}}
 <section>
@@ -37,17 +52,12 @@
   <h2>List of Company Employees</h2>  
   {{#each employees as |employees|}}
   <ol class="employee-list">
-  <li>
-      {{> employee-info employees}}
-    </li>
+          {{> employee-info employees}}
   </ol>
   {{/each}}
 </section>
 {{/if}}
+{{/if}}
 
-
-{{#unless loggedIn}}
-<h1>You must login first!</h1>
-{{/unless}}
 
 <script src="/javascript/add-employee.js"></script>

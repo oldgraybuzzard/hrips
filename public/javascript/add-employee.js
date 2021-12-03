@@ -12,8 +12,6 @@ async function newFormHandler(event) {
       first_name,
       last_name,
       email,
-
-      
     }),
     headers: {
       'Content-Type': 'application/json'
