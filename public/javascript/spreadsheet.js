@@ -1,4 +1,5 @@
 const { GoogleSpreadsheet } = require('google-spreadsheet');
+
 const creds = require('../../client_secret.json');
 
 const doc = new GoogleSpreadsheet('1MSytQDbuL2k3WcA_xm_jRhFkLQQcKJOy2kPNpGTS_Zw');
@@ -25,6 +26,8 @@ async function accessSpreadsheet() {
   rows.forEach(row => {
     printEmployee(row);
   })
+
+  
 
 };
 

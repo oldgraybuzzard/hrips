@@ -2,16 +2,11 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Employee, Role } = require('../models');
 const withAuth = require('../utils/auth');
-const router = require('./home-routes');
 
 // get all posts for dashboard
-router.get('/', withAuth, (req, res) => {
-  console.log(req.session);
+router.get('/', (req, res) => {
   console.log('======================');
-  EMPLOYEE.findAll({
-    where: {
-      user_id: req.session.user_id
-    },
+  Employee.findAll({
     attributes: [
       'id',
       'first_name',
@@ -23,13 +18,17 @@ router.get('/', withAuth, (req, res) => {
     include: [
       {
         model: Role,
-        attributes: ['id', 'title', 'salary', 'department_id']
-      }
-    ],
+        attributes: ['id', 'title', 'salary', 'department_id'],
+      },
+    ]
   })
-    .then(dbPostData => {
-      const employees = dbEmployeeData.map(employee => employee.get({ plain: true }));
-      res.render('import', { employees, loggedIn: true });
+    .then(dbEmployeeData => {
+      const employees = dbEmployeeData.map(employees => employees.get({ plain: true }));
+
+      res.render('import', {
+        employees,
+        loggedIn: req.session.loggedIn
+      });
     })
     .catch(err => {
       console.log(err);
@@ -37,6 +36,7 @@ router.get('/', withAuth, (req, res) => {
     });
 });
 
+// Add an employee
 router.post('/', (req,res) => {
   Employee.create({
     first_name: req.body.first_name,
@@ -62,7 +62,5 @@ router.post('/', (req,res) => {
     res.status(500).json(err);
   });
 });
-
-
 
 module.exports = router;

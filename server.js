@@ -3,8 +3,12 @@ const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers/');
+const fs = require('fs');
+const readline = require('readline');
+const {google} = require('googleapis');
 
 
+const getSheets = require('./public/javascript/spreadsheet');
 
 
 const app = express();
@@ -26,6 +30,7 @@ const sess = {
 app.use(session(sess));
 
 const helpers = require('./utils/helpers');
+const { get } = require('http');
 
 const hbs = exphbs.create({ helpers });
 
