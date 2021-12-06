@@ -8,11 +8,11 @@ router.get('/', (req, res) => {
     csv()
     .fromFile(csvFilePath)
     .then((jsonObj) => {
-      res.json(jsonObj);
+    //   res.json(jsonObj);
     })
-    // res.render('csv-import', {
-    //   loggedIn: req.session.loggedIn
-    // })
+    res.render('csv-import', {
+      loggedIn: req.session.loggedIn
+    })
   });
         
 

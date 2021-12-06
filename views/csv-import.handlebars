@@ -1,11 +1,17 @@
 <div>
-  <h1>Hello World</h1>
+  <h1>CSV File Uploader</h1>
 
 {{#each array}}
 {{array.[1].first_name}}
 {{/each}}
 {{log array.[1].first_name}}
 
+</div>
+
+<input type="file" id="fileUpload" />
+<input type="button" id="upload" value="Upload" onclick="Upload()" />
+<hr />
+<div id="dvCSV">
 </div>
 
 <script src="/javascript/csv.js"></script>
