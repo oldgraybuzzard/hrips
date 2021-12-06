@@ -1,0 +1,5 @@
+first_name,last_name,email,manager_id,role_id
+Sally,Tester,sally@test.com,1,1
+Tom,Tester,tom@test.com,1,1
+Jeff,Tester,jeff@test.com,1,1
+Billy,Tester,bil@test.com,1,1

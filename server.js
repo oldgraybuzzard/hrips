@@ -3,13 +3,16 @@ const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers/');
+const csv = require('csv');
 const fs = require('fs');
 const readline = require('readline');
 const {google} = require('googleapis');
-const csv = require('csv')
+
+const csvData = require('./public/javascript/csv');
 
 
-const getSheets = require('./public/javascript/spreadsheet');
+
+// const getSheets = require('./public/javascript/spreadsheet');
 
 
 const app = express();

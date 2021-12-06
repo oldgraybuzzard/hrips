@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
     .then(dbEmployeeData => {
       const employees = dbEmployeeData.map(employees => employees.get({ plain: true }));
 
-      res.render('import', {
+      res.render('sheets-import', {
         employees,
         loggedIn: req.session.loggedIn
       });
