@@ -27,7 +27,7 @@ Node.JS, NPM, bcrypt, connect-session-sequelize, dotenv, express, express-handle
 ## Usage 🏆
 ### Screenshots:
 
-
+[CSV Uploader](https://github.com/oldgraybuzzard/opus-robur/blob/3726a8d432b736445dd512f2aede3b66d2cf284b/assets/images/csv_uploader.PNG)
 
 ## Contributors 😃
 [oldgraybuzzard](https://github.com/oldgraybuzzard)
