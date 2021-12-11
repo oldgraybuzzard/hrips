@@ -41,4 +41,4 @@ Node.JS, NPM, bcrypt, connect-session-sequelize, dotenv, express, express-handle
 None 
 
 ## Tests 🧪
-In order to test the functionality of the application create a new user and use any combination of numbers from 1 -6 digits in length for the BRN. 
+None
