@@ -182,3 +182,14 @@ footer {
   padding: 1%;
   font-size: 110%;
 }
+
+table {
+  border-collapse: collapse;
+  border: 2px black solid;
+  font: 12px sans-serif;
+}
+
+td {
+  border: 1px black solid;
+  padding: 5px;
+}
