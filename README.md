@@ -26,11 +26,11 @@ Node.JS, NPM, bcrypt, connect-session-sequelize, dotenv, express, express-handle
 
 ## Usage 🏆
 ### Screenshots:
-[Login in First](https://github.com/oldgraybuzzard/opus-robur/blob/db57e065baaf4f0e12ed9d619e1c5e63ff508af9/assets/images/login_first.PNG)
-[Login Screen](https://github.com/oldgraybuzzard/opus-robur/blob/db57e065baaf4f0e12ed9d619e1c5e63ff508af9/assets/images/login_screen.PNG)
-[Employee Dashboard](https://github.com/oldgraybuzzard/opus-robur/blob/db57e065baaf4f0e12ed9d619e1c5e63ff508af9/assets/images/new%20employee.PNG)
-[Google Sheets Importer](https://github.com/oldgraybuzzard/opus-robur/blob/db57e065baaf4f0e12ed9d619e1c5e63ff508af9/assets/images/google_sheets%20importer.PNG)
-[CSV Uploader](https://github.com/oldgraybuzzard/opus-robur/blob/3726a8d432b736445dd512f2aede3b66d2cf284b/assets/images/csv_uploader.PNG)
+* [Login in First](https://github.com/oldgraybuzzard/opus-robur/blob/db57e065baaf4f0e12ed9d619e1c5e63ff508af9/assets/images/login_first.PNG)
+* [Login Screen](https://github.com/oldgraybuzzard/opus-robur/blob/db57e065baaf4f0e12ed9d619e1c5e63ff508af9/assets/images/login_screen.PNG)
+* [Employee Dashboard](https://github.com/oldgraybuzzard/opus-robur/blob/db57e065baaf4f0e12ed9d619e1c5e63ff508af9/assets/images/new%20employee.PNG)
+* [Google Sheets Importer](https://github.com/oldgraybuzzard/opus-robur/blob/db57e065baaf4f0e12ed9d619e1c5e63ff508af9/assets/images/google_sheets%20importer.PNG)
+* [CSV Uploader](https://github.com/oldgraybuzzard/opus-robur/blob/3726a8d432b736445dd512f2aede3b66d2cf284b/assets/images/csv_uploader.PNG)
 
 ## Contributors 😃
 [oldgraybuzzard](https://github.com/oldgraybuzzard)
