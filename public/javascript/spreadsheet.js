@@ -1,34 +1,49 @@
 const { GoogleSpreadsheet } = require('google-spreadsheet');
-
 const creds = require('../../client_secret.json');
+require('dotenv').config();
 
-const doc = new GoogleSpreadsheet('1MSytQDbuL2k3WcA_xm_jRhFkLQQcKJOy2kPNpGTS_Zw');
+function makeApiCall() {
 
-function printEmployee(employee) {
-  console.log(`Name: ${employee.first_name} ${employee.last_name}`);
-  console.log(`Email: ${employee.email}`);
-  console.log(`Manager ID: ${employee.manager_id}`);
-  console.log(`Role ID: ${employee.role_id}`);
-  console.log('-----------------------');
+  var request = gapi.client.sheets.spreadsheets.values.get(params);
+  request.then(function(response) {
+    // TODO: Change code below to process the `response` object:
+    console.log(response.result);
+  }, function(reason) {
+    console.error('error: ' + reason.result.error.message);
+  });
 }
 
-async function accessSpreadsheet() {
-  
-  await doc.useServiceAccountAuth(creds);
-  await doc.loadInfo();
-  await doc.getInfo();
-  const sheet = doc.sheetsByIndex[0];
-  
-  const rows = await sheet.getRows({
-    offset: 0
+function initClient() {
+  var API_KEY = 'process.env.gAPI'; 
+  var CLIENT_ID = '819852918750-g68j0bshdpra7rb9686g22v1ed9b5891.apps.googleusercontent.com';
+  var SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
+
+  gapi.client.init({
+    'apiKey': API_KEY,
+    'clientId': CLIENT_ID,
+    'scope': SCOPE,
+    'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
+  }).then(function() {
+    gapi.auth2.getAuthInstance().isSignedIn.listen(updateSignInStatus);
+    updateSignInStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
   });
+}
 
-  rows.forEach(row => {
-    printEmployee(row);
-  })
+function handleClientLoad() {
+  gapi.load('client:auth2', initClient);
+}
 
-  
+function updateSignInStatus(isSignedIn) {
+  if (isSignedIn) {
+    makeApiCall();
+  }
+}
 
-};
+function handleSignInClick(event) {
+  gapi.auth2.getAuthInstance().signIn();
+}
 
-accessSpreadsheet();
+function handleSignOutClick(event) {
+  gapi.auth2.getAuthInstance().signOut();
+}
+
