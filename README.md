@@ -3,14 +3,14 @@
 [![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)
   
 ## Description
-This is a HR management platform geared toward small business owners.
+This is a HR management platform geared toward small business owners. It will allow small business oweners to import employees via Google sheets or by uploading the employee information via a CSV file. 
 
 ## Table of Contents
 * [Dependenciess](#dependencies)
 * [Links](#links)
 * [Usage](#usage)
 * [Contributors](#contributors)
-* [Features](#features)
+* [Future Development](#future_development)
 * [Tests](#tests)
 
 
@@ -37,8 +37,13 @@ Node.JS, NPM, bcrypt, connect-session-sequelize, dotenv, express, express-handle
 * Contact me at k_felder@me.com
 
 
-## Features
-None 
+## Future_Development
+* Refine the Google integration
+* Add in additional data repositories
+* Control user requests
+* Create PDF of employee records
+* Protection of all PII
+* Beautify the front-end
 
 ## Tests 🧪
 None
