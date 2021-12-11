@@ -26,10 +26,7 @@ Node.JS, NPM, bcrypt, connect-session-sequelize, dotenv, express, express-handle
 
 ## Usage 🏆
 ### Screenshots:
-[Login page](https://github.com/oldgraybuzzard/aluminum_rivet_life/blob/main/readme_assets/ARL_login2.PNG)
-[Dashboard](https://github.com/oldgraybuzzard/aluminum_rivet_life/blob/main/readme_assets/ARL_dashboard.PNG)
-[Creat a post](https://github.com/oldgraybuzzard/aluminum_rivet_life/blob/main/readme_assets/ARL_newpost.PNG)
-[Comment on a post](https://github.com/oldgraybuzzard/aluminum_rivet_life/blob/main/readme_assets/ARL_comment.PNG)
+
 
 
 ## Contributors 😃
